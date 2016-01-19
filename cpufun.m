@@ -36,6 +36,6 @@ function count = cpufun()
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fsecs (CPU)', cpuTime));
-    savefig('cpu.fig', 'compact');
+    savefig('cpu.fig');
     saveas(gcf, 'cpu.png');
 end

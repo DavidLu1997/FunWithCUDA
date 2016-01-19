@@ -41,6 +41,6 @@ function count = cudafun()
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fsecs (GPU-CUDA)', gpuTime));
-    savefig('cuda.fig', 'compact');
+    savefig('cuda.fig');
     saveas(gcf, 'cuda.png');
 end
