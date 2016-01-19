@@ -13,4 +13,4 @@ Notes:
 - gpuDevice() for gpuDevice information
 - cpufun and cudafun can run individually using the same parameters
 
-[alt tag](https://raw.github.com/DavidLu1997/FunWithCUDA/result.png)
+![Alt text](https://github.com/DavidLu1997/FunWithCUDA/blob/master/result.png "1000 Iterations")
