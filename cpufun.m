@@ -26,6 +26,7 @@ function count = cpufun(maxIter, gridSize)
     %Display
     cpuTime = toc(t);
     fig = figure(1);
+    clf(fig, 'reset');
     fig.Position = [200 200 600 600];
     imagesc(x, y, count);
     axis image

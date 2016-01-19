@@ -31,6 +31,7 @@ function count = cudafun(maxIter, gridSize)
     gpuTime = toc(t);
     disp(gpuTime);
     fig = figure(2);
+    clf(fig, 'reset');
     fig.Position = [200 200 600 600];
     imagesc(x, y, count);
     axis image

@@ -19,6 +19,7 @@ function err = cudaerror(maxIter, gridSize)
     
     %Display error
     fig = figure(3);
+    clf(fig, 'reset');
     fig.Position = [200 200 600 600];
     imagesc(x, y, err);
     axis image
