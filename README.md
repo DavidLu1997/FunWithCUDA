@@ -1,6 +1,5 @@
 # FunWithCUDA
-Computes Mandelbrot sets with CUDA in MATLAB
-Displays difference between CPU and GPU computations
+Computes Mandelbrot sets with CUDA in MATLAB, and displays the difference between CPU and GPU computations
 
 Instructions:
 - Open MATLAB 2013 or later (may work on earlier versions, not tested)
