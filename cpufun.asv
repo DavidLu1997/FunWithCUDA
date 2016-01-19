@@ -1,9 +1,9 @@
 %Generates a Mandelbrot set using the CPU
 function count = cpufun()
     %Max iterations
-    maxIter = 500;
+    maxIter = 1000;
     %Grid size
-    gridSize = 1000;
+    gridSize = 5000;
 
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];
@@ -30,10 +30,11 @@ function count = cpufun()
 
     %Display
     cpuTime = toc(t);
-    fig = gcf;
-    fig.Position = [200 200 600 600];
+    figure(1);
+    figure.Position = [200 200 600 600];
     imagesc(x, y, count);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fsecs (CPU)', cpuTime));
+    saveas(figure, 'cpu.png');
 end

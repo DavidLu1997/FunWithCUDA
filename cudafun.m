@@ -35,12 +35,11 @@ function count = cudafun()
     count = gather(count);
     gpuTime = toc(t);
     disp(gpuTime);
-    fig = gcf;
+    fig = figure(2);
     fig.Position = [200 200 600 600];
     imagesc(x, y, count);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fsecs (GPU-CUDA)', gpuTime));
-    savefig('cuda.fig');
-    saveas(gcf, 'cuda.png');
+    saveas(figure(2), 'cuda.png');
 end

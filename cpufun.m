@@ -30,12 +30,11 @@ function count = cpufun()
 
     %Display
     cpuTime = toc(t);
-    fig = gcf;
+    fig = figure(1);
     fig.Position = [200 200 600 600];
     imagesc(x, y, count);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fsecs (CPU)', cpuTime));
-    savefig('cpu.fig');
-    saveas(gcf, 'cpu.png');
+    saveas(figure(1), 'cpu.png');
 end

@@ -3,9 +3,9 @@ function count = cudafun()
     disp(gpuDevice()); %memory check
 
     %Max iterations
-    maxIter = 500;
+    maxIter = 1000;
     %Grid size
-    gridSize = 1000;
+    gridSize = 5000;
 
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];
@@ -35,10 +35,11 @@ function count = cudafun()
     count = gather(count);
     gpuTime = toc(t);
     disp(gpuTime);
-    fig = gcf;
-    fig.Position = [200 200 600 600];
+    figure(2);
+    figure.Position = [200 200 600 600];
     imagesc(x, y, count);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fsecs (GPU-CUDA)', gpuTime));
+    saveas(figure, 'cuda.png');
 end

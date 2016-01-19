@@ -18,13 +18,12 @@ function err = cudaerror()
     y = linspace(yLimit(1), yLimit(2), gridSize);
     
     %Display error
-    fig = gcf;
+    fig = figure(3);
     fig.Position = [200 200 600 600];
     imagesc(x, y, err);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
-    title(sprintf('Average error: %1.12f', mean(mean(err))));
-    savefig('error.fig');
-    saveas(gcf, 'error.png');
+    title(sprintf('Total error: %1.12E', sum(sum(err))));
+    saveas(figure(3), 'error.png');
 end
 
