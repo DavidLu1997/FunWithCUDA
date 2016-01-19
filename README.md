@@ -6,6 +6,7 @@ Instructions:
 - Open MATLAB 2013 or later (may work on earlier versions, not tested)
 - Change directory to repository directory
 - cudadiff(maxIterations, gridSize)
+- CUDA capable Nvidia GPU required
 
 Notes:
 - PNGs are automatically generated with results
