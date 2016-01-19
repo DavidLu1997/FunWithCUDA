@@ -1,10 +1,5 @@
 %Generates a Mandelbrot set using the CPU
-function count = cpufun()
-    %Max iterations
-    maxIter = 500;
-    %Grid size
-    gridSize = 1000;
-
+function count = cpufun(maxIter, gridSize)
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];
     %y limit

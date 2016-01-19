@@ -1,11 +1,6 @@
 %Generates a Mandelbrot set using CUDA
-function count = cudafun()
+function count = cudafun(maxIter, gridSize)
     disp(gpuDevice()); %memory check
-
-    %Max iterations
-    maxIter = 500;
-    %Grid size
-    gridSize = 1000;
 
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];

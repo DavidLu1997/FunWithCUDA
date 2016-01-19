@@ -1,8 +1,8 @@
 %Error checking between CPU and GPU
-function err = cudaerror()
+function err = cudaerror(maxIter, gridSize)
     %Get count
-    cpuCount = cpufun();
-    gpuCount = cudafun();
+    cpuCount = cpufun(maxIter, gridSize);
+    gpuCount = cudafun(maxIter, gridSize);
     err = abs(cpuCount - gpuCount);
     
     %Grid size
