@@ -1,9 +1,10 @@
 %Error checking between CPU and GPU
-function err = cudaerror(maxIter, gridSize)
+function [diff, err] = cudaerror(maxIter, gridSize)
     %Get count
-    cpuCount = cpufun(maxIter, gridSize);
-    gpuCount = cudafun(maxIter, gridSize);
+    [cpuTime, cpuCount] = cpufun(maxIter, gridSize);
+    [gpuTime, gpuCount] = cudafun(maxIter, gridSize);
     err = abs(cpuCount - gpuCount);
+    diff = abs(cpuTime - gpuTime);
     
     %Grid size
     gridSize = 1000;
@@ -24,7 +25,7 @@ function err = cudaerror(maxIter, gridSize)
     imagesc(x, y, err);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
-    title(sprintf('Total error: %1.12E', sum(sum(err))));
+    title(sprintf('Time Difference: %1.2f s\nTotal error: %1.12E', diff, sum(sum(err))));
     saveas(figure(3), 'error.png');
 end
 

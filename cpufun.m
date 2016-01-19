@@ -1,5 +1,5 @@
 %Generates a Mandelbrot set using the CPU
-function count = cpufun(maxIter, gridSize)
+function [cpuTime, count] = cpufun(maxIter, gridSize)
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];
     %y limit
@@ -27,10 +27,10 @@ function count = cpufun(maxIter, gridSize)
     cpuTime = toc(t);
     fig = figure(1);
     clf(fig, 'reset');
-    fig.Position = [200 200 600 600];
+    fig.Position = [200, 200, 600, 600];
     imagesc(x, y, count);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
-    title(sprintf('%1.2fsecs (CPU)', cpuTime));
+    title(sprintf('%1.2f s (CPU)', cpuTime));
     saveas(figure(1), 'cpu.png');
 end
