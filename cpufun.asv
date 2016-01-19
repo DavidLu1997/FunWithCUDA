@@ -1,38 +1,39 @@
 %Generates a Mandelbrot set using the CPU
+function count = cpufun()
+    %Max iterations
+    maxIter = 500;
+    %Grid size
+    gridSize = 1000;
 
-%Max iterations
-maxIter = 1000;
-%Grid size
-gridSize = 2000;
+    %x limit
+    xLimit = [-0.748766713922161, -0.748766707771757];
+    %y limit
+    yLimit = [0.123640844894862, 0.123640851045266];
 
-%x limit
-xLimit = [-0., -0.8];
-%y limit
-yLimit = [ 0.1,  0.2];
+    %Initialization
+    t = tic();
+    x = linspace(xLimit(1), xLimit(2), gridSize);
+    y = linspace(yLimit(1), yLimit(2), gridSize);
 
-%Initialization
-t = tic();
-x = linspace(xLimit(1), xLimit(2), gridSize);
-y = linspace(yLimit(1), yLimit(2), gridSize);
+    [xGrid, yGrid] = meshgrid(x, y);
+    z0 = xGrid + 1i*yGrid;
+    count = ones(size(z0));
 
-[xGrid, yGrid] = meshgrid(x, y);
-z0 = xGrid + 1i*yGrid;
-count = ones(size(z0));
+    %Calculate
+    z = z0;
+    for n = 0:maxIter
+       z = z.*z + z0;
+       inside = abs( z )<=2;
+       count = count + inside;
+    end
+    count = log(count);
 
-%Calculate
-z = z0;
-for n = 0:maxIter
-   z = z.*z + z0;
-   inside = abs( z )<=2;
-   count = count + inside;
+    %Display
+    cpuTime = toc(t);
+    fig = gcf;
+    fig.Position = [200 200 600 600];
+    imagesc(x, y, count);
+    axis image
+    colormap([jet(); flipud(jet()); 0 0 0]);
+    title(sprintf('%1.2fsecs (CPU)', cpuTime));
 end
-count = log(count);
-
-%Display
-cpuTime = toc(t);
-fig = gcf;
-fig.Position = [200 200 600 600];
-imagesc(x ,y ,count);
-axis image
-colormap([jet(); flipud(jet()); 0 0 0]);
-title(sprintf('%1.2fsecs (CPU)', cpuTime));

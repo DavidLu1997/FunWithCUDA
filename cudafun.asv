@@ -1,5 +1,7 @@
-%Generates a Mandelbrot set using the CPU
-function count = cpufun()
+%Generates a Mandelbrot set using CUDA
+function count = cudafun()
+    disp(gpuDevice()); %memory check
+
     %Max iterations
     maxIter = 500;
     %Grid size
@@ -12,12 +14,12 @@ function count = cpufun()
 
     %Initialization
     t = tic();
-    x = linspace(xLimit(1), xLimit(2), gridSize);
-    y = linspace(yLimit(1), yLimit(2), gridSize);
+    x = gpuArray.linspace(xLimit(1), xLimit(2), gridSize);
+    y = gpuArray.linspace(yLimit(1), yLimit(2), gridSize);
 
     [xGrid, yGrid] = meshgrid(x, y);
-    z0 = xGrid + 1i*yGrid;
-    count = ones(size(z0));
+    z0 = complex(xGrid, yGrid);
+    count = ones(size(z0), 'gpuArray');
 
     %Calculate
     z = z0;
@@ -29,13 +31,14 @@ function count = cpufun()
     count = log(count);
 
     %Display
-    cpuTime = toc(t);
+    %Get data from GPU
+    count = gather(count);
+    gpuTime = toc(t);
+    disp(gpuTime);
     fig = gcf;
     fig.Position = [200 200 600 600];
     imagesc(x, y, count);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
-    title(sprintf('%1.2fsecs (CPU)', cpuTime));
-    savefig('cpu.fig', 'compact');
-    saveas(gcf, 'cpu.png');
+    title(sprintf('%1.2fsecs (GPU-CUDA)', gpuTime));
 end
