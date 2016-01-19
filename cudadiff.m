@@ -7,9 +7,6 @@ function [diff, err] = cudadiff(maxIter, gridSize)
     count = (cpuCount + gpuCount) / 2;
     diff = abs(cpuTime - gpuTime);
     
-    %Grid size
-    gridSize = 1000;
-    
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];
     %y limit
