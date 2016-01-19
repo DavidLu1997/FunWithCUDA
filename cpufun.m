@@ -25,12 +25,11 @@ function [cpuTime, count] = cpufun(maxIter, gridSize)
 
     %Display
     cpuTime = toc(t);
-    fig = figure(1);
+    fig = figure('position', [200, 200, 1000, 1000]);
     clf(fig, 'reset');
-    fig.Position = [200, 200, 600, 600];
     imagesc(x, y, count);
-    axis image
+    axis off
     colormap([jet(); flipud(jet()); 0 0 0]);
-    title(sprintf('%1.2f s (CPU)', cpuTime));
-    saveas(figure(1), 'cpu.png');
+    title(sprintf('%1.2fs on CPU, %d Iterations', cpuTime, maxIter));
+    saveas(gcf, 'cpu.png');
 end

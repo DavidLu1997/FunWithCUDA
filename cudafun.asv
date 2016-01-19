@@ -1,12 +1,6 @@
 %Generates a Mandelbrot set using CUDA
-function count = cudafun()
-    disp(gpuDevice()); %memory check
-
-    %Max iterations
-    maxIter = 1000;
-    %Grid size
-    gridSize = 5000;
-
+function [gpuTime, count] = cudafun(maxIter, gridSize)
+    disp(gpuDevice());
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];
     %y limit
@@ -35,11 +29,12 @@ function count = cudafun()
     count = gather(count);
     gpuTime = toc(t);
     disp(gpuTime);
-    figure(2);
-    figure.Position = [200 200 600 600];
+    fig = figure(1);
+    clf(fig, 'reset');
+    fig.Position = [200 200 800 600];
     imagesc(x, y, count);
     axis image
     colormap([jet(); flipud(jet()); 0 0 0]);
-    title(sprintf('%1.2fsecs (GPU-CUDA)', gpuTime));
-    saveas(figure, 'cuda.png');
+    title(sprintf('%1.2fs (GPU) ', gpuTime));
+    saveas(figure(1), 'cuda.png');
 end
