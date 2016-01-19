@@ -32,4 +32,5 @@ function [cpuTime, count] = cpufun(maxIter, gridSize)
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fs on CPU, %d Iterations', cpuTime, maxIter));
     saveas(gcf, 'cpu.png');
+    saveas(gcf, 'cpu.fig');
 end

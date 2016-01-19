@@ -36,4 +36,5 @@ function [gpuTime, count] = cudafun(maxIter, gridSize)
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%1.2fs on GPU, %d Iterations', gpuTime, maxIter));
     saveas(gcf, 'cuda.png');
+    saveas(gcf, 'cuda.fig');
 end

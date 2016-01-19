@@ -27,5 +27,6 @@ function [diff, err] = cudadiff(maxIter, gridSize)
     colormap([jet(); flipud(jet()); 0 0 0]);
     title(sprintf('%d Iterations\nCPU Time: %1.2fs\nGPU Time: %1.2fs\nTime Difference: %1.2fs\nGPU is %1.2fx faster\nTotal error: %1.12E', maxIter, cpuTime, gpuTime, diff, cpuTime / gpuTime, sum(sum(err))));
     saveas(gcf, 'result.png');
+    saveas(gcf, 'result.fig');
 end
 
