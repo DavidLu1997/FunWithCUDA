@@ -4,6 +4,7 @@ Computes Mandelbrot sets with CUDA in MATLAB, and displays the difference betwee
 Instructions:
 - Open MATLAB 2013 or later (may work on earlier versions, not tested)
 - Change directory to repository directory
+- Change directory to mandelbrot
 - cudadiff(maxIterations, gridSize)
 - CUDA capable Nvidia GPU required
 
