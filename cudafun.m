@@ -1,6 +1,13 @@
 %Generates a Mandelbrot set using CUDA
 function [gpuTime, count] = cudafun(maxIter, gridSize)
-    disp(gpuDevice());
+    %Check for GPU
+    try
+       gpuDevice();
+    catch
+        disp('No GPU detected');
+        return;
+    end
+    
     %x limit
     xLimit = [-0.748766713922161, -0.748766707771757];
     %y limit
