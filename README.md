@@ -14,4 +14,4 @@ Notes:
 - gpuDevice() for gpuDevice information
 - cpufun and cudafun can run individually using the same parameters
 
-![Alt text](https://github.com/DavidLu1997/FunWithCUDA/blob/master/result.png)
+![Alt text](https://github.com/DavidLu1997/FunWithCUDA/blob/master/mandelbrot/result.png)
